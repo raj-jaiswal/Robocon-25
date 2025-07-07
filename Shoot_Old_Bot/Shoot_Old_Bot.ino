@@ -16,8 +16,8 @@ const int shoot_speed1 = 80;
 const int shoot_speed2 = 85;
 const int shoot_speed3 = 90;
 
-const int initial_angle = 45;
-const int shoot_angle = 125;
+const int initial_angle = 180;
+const int shoot_angle = 90;
 const int shoot_delay = 1000;
 
 const int MAX_AXES = 8;
@@ -325,9 +325,9 @@ void check(){
 void Rotate_angle(int targetAngle){
   if(currentAngle == targetAngle) return;
 
-  int step = (targetAngle < currentAngle) ? 5 : -5;
+  int step = (targetAngle > currentAngle) ? 5 : -5;
   while (currentAngle != targetAngle){
-    currentAngle -= step;
+    currentAngle += step;
     shootServo.write(currentAngle);
     delay(5);
   }
